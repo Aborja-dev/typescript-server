@@ -3,7 +3,10 @@ module.exports = {
 		browser: true,
 		es2021: true
 	},
-	extends: 'standard',
+	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'standard'],
+	parser: '@typescript-eslint/parser',
+	root: true,
+	plugins: ['@typescript-eslint'],
 	overrides: [
 	],
 	parserOptions: {
@@ -12,6 +15,7 @@ module.exports = {
 	},
 	rules: {
 		'no-tabs': 'off',
-		indent: ['error', 'tab']
+		indent: ['error', 'tab'],
+		'@typescript-eslint/explicit-function-return-type': 'error'
 	}
 }

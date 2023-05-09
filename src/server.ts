@@ -1,5 +1,6 @@
 import { ExpressInstance, httpServerInstance } from './types/types.d'
 import { ApolloServer } from '@apollo/server'
+import { startStandaloneServer } from '@apollo/server/standalone'
 import { typeDefs, resolvers } from './schema'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import http from 'http'
@@ -20,4 +21,9 @@ export const createGraphQLServer = async (express: ExpressInstance): Promise<gra
 		httpServer,
 		server
 	}
+}
+export const createStandaloneServer = async (port = 4000): Promise<ApolloServer> => {
+	const server = new ApolloServer({ typeDefs, resolvers: resolvers as any })
+	await startStandaloneServer(server, { listen: { port } })
+	return server
 }

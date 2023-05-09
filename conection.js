@@ -5,7 +5,7 @@ config()
 const schema = mongoose.Schema({
 	text: mongoose.SchemaTypes.String
 })
-const Mensaje = mongoose.model('mensajes', schema)
+export const Mensaje = mongoose.model('mensajes', schema)
 const connectionURL = process.env.DB_URL_TEST
 export const startConnection = async () => {
 	try {

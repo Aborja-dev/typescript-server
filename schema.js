@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { Mensaje } from './conection.js'
 
 export const typeDefs = gql`
     type Query {
@@ -7,6 +8,9 @@ export const typeDefs = gql`
 `
 export const resolvers = {
 	Query: {
-		hola: async () => 'hola'
+		hola: async () => {
+			const mensajes = await Mensaje.findOne({})
+			return mensajes.text
+		}
 	}
 }
